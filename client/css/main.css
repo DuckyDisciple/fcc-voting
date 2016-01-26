@@ -1,0 +1,54 @@
+/*-----Main Style-----*/
+body {
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+}
+p {
+    margin: 8px 0 0 0;
+}
+.container p {
+    text-align: center;
+    padding: 0;
+}
+
+/*-----Image Style-----*/
+img {
+    margin: 20px auto 0 auto;
+    display: block;
+}
+.gude-text {
+    padding: 0;
+    margin: -25px 0 0 0;
+    font-weight: 500;
+    font-size: 60px;
+    color: #FFA000;
+}
+
+/*-----Button Style-----*/
+.btn-container {
+    margin: -10px auto 0 auto;
+    text-align: center;
+}
+
+.btn {
+    color: white;
+    background-color: #FFA000;
+    display: inline-block;
+    border: 0;
+    border-radius: 3px;
+    font-weight: 500;
+    width: 100px;
+    font-size: 20px;
+    padding: 10px 5px;
+}
+
+.btn:focus {
+    outline: 0;
+}
+
+.btn:hover,
+.adder:hover{
+    transform: scale(0.9,0.9);
+    -webkit-transform: scale(0.9,0.9);
+    -moz-transform: scale(0.9,0.9);
+}
