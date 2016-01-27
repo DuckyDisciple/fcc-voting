@@ -6,6 +6,12 @@
   <link rel="stylesheet" href="/client/css/main.css" type="text/css" />
   <link href="http://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet" type="text/css">
 </head>
+<header>
+  <p>Welcome, <span id="profile-display"></span>!</p>
+  <a href="/profile" class="menu">Profile</a>
+  <p>|</p>
+  <a href="/logout" class="menu">Logout</a>
+</header>
 <body>
   <div class="container">
     <img src="client/img/gudetama.png" class="adder"/>
@@ -20,6 +26,8 @@
       <button class="btn btn-delete">Reset</button>
     </div>
   </div>
-  <script type="text/javascript" src="/controllers/clickController.client.js"></script>
+  <script type="text/javascript" src="common/ajax-functions.js"></script>
+  <script type="text/javascript" src="controllers/clickController.client.js"></script>
+  <script type="text/javascript" src="controllers/userController.client.js"></script>
 </body>
 </html>
