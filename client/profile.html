@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link rel="stylesheet" href="/client/css/main.css" type="text/css" />
+</head>
+<body>
+    <div class="container">
+        <div class="github-profile">
+            <img src="/client/img/github_32px.png" alt="github logo"/>
+            <p><span class="profile-label">ID: </span><span id="profile-id" class="profile-value"></span></p>
+            <p><span class="profile-label">Username: </span><span class="profile-value" id="profile-username"></span></p>
+            <p><span class="profile-label">Display Name: </span><span class="profile-value" id="profile-display"></span></p>
+            <p><span class="profile-label">Repositories: </span><span class="profile-value" id="profile-repos"></span></p>
+            <div class="bottom-menu">
+                <a href="/" class="menu">Home</a>
+                <p class="menu-divide">|</p>
+                <a href="/logout" class="menu">Logout</a>
+            </div>
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="common/ajax-functions.js"></script>
+    <script type="text/javascript" src="controllers/userController.client.js"></script>
+</body>
+</html>

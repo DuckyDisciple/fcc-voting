@@ -1,37 +1,38 @@
 "use strict";
 
-function clickHandler(db){
-    var clicks = db.collection("clicks");
+var Users = require("../models/users.js");
+
+function ClickHandler(){
+    
     this.getClicks = function(req, res){
-        var clickProjection = {'_id': 0};
-        clicks.findOne({}, clickProjection, function(err, data){
-           if(err) throw err;
-           
-           if(data){
-               res.json(data);
-           }else{
-               clicks.insert({'clicks':0}, function(err, doc) {
-                   if(err) throw err;
-                   
-                   res.json(doc);
-               });
-           }
-        });
+        Users
+            .findOne({'github.id':req.user.github.id}, {_id:0})
+            .exec(function(err, data){
+               if(err) throw err;
+               
+               res.json(data.numClicks);
+            });
     };
+    
     this.addClick = function(req, res) {
-        clicks.findAndModify({}, {_id:1}, {$inc: { clicks:1 } }, function(err, data){
-            if(err) throw err;
-            
-            res.json(data);
-        });
+        Users
+            .findOneAndUpdate({'github.id':req.user.github.id},{$inc:{'numClicks.clicks':1}})
+            .exec(function(err, data){
+                if(err) throw err;
+                
+                res.json(data.numClicks);
+            });
     };
+    
     this.resetClicks = function(req, res){
-        clicks.findAndModify({}, {_id:1}, {$set: { clicks:0 } },function(err, data) {
-            if(err) throw err;
-            
-            res.json(data);
-        })
-    }
+        Users
+            .findOneAndUpdate({'github.id':req.user.github.id},{$set:{'numClicks.clicks':0}})
+            .exec(function(err, data) {
+                if(err) throw err;
+                
+                res.json(data.numClicks);
+            });
+    };
 }
 
-module.exports = clickHandler;
+module.exports = ClickHandler;
