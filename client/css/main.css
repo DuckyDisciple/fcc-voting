@@ -58,7 +58,41 @@ img {
     text-align: center;
 }
 
+/*-----Profile Page-----*/
+.github-profile {
+    text-align: center;
+    background-color: #EEE;
+    border-radius: 3px;
+    width: 300px;
+    height: 250px;
+    margin: 86px auto 0px auto;
+}
+
+.github-profile > img {
+    padding-top: 20px;
+}
+
+.profile-label {
+    font-weight: bold;
+}
+
+.profile-value {
+    font-weight: 400;
+}
+
+.bottom-menu {
+    padding-top: 15px;
+}
+
+.menu-divide{
+    display: inline;
+}
+
 /*-----Header-----*/
 header a ~ p {
     display: inline;
+}
+
+header {
+    text-align: right;
 }

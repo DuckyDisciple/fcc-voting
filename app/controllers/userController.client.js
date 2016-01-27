@@ -8,13 +8,18 @@
     var apiUrl = appUrl + '/api/:id';
     
     function updateHtmlElement(data, element, userProperty){
-        element.innerHtml = data[userProperty];
+        element.innerHTML = data[userProperty];
     }
     
     ajaxFunctions.ready(ajaxFunctions.ajaxRequest("GET",apiUrl,function(data){
         var userObject = JSON.parse(data);
         
-        updateHtmlElement(userObject,displayName,'displayName');
+        if(userObject.displayName===null){
+            updateHtmlElement(userObject,displayName,'username');
+        }else{
+            updateHtmlElement(userObject,displayName,'displayName');
+        }
+        
         if(profileId!==null){
             updateHtmlElement(userObject,profileId,'id');
         }
