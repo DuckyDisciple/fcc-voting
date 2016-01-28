@@ -59,7 +59,7 @@ img {
 }
 
 /*-----Profile Page-----*/
-.github-profile {
+.profile {
     text-align: center;
     background-color: #EEE;
     border-radius: 3px;
@@ -68,7 +68,7 @@ img {
     margin: 86px auto 0px auto;
 }
 
-.github-profile > img {
+.profile > img {
     padding-top: 20px;
 }
 
@@ -86,6 +86,10 @@ img {
 
 .menu-divide{
     display: inline;
+}
+
+.hide {
+    display: none;
 }
 
 /*-----Header-----*/

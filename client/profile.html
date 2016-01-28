@@ -7,17 +7,23 @@
 </head>
 <body>
     <div class="container">
-        <div class="github-profile">
+        <div id="github-profile" class="profile hide">
             <img src="/client/img/github_32px.png" alt="github logo"/>
-            <p><span class="profile-label">ID: </span><span id="profile-id" class="profile-value"></span></p>
-            <p><span class="profile-label">Username: </span><span class="profile-value" id="profile-username"></span></p>
-            <p><span class="profile-label">Display Name: </span><span class="profile-value" id="profile-display"></span></p>
-            <p><span class="profile-label">Repositories: </span><span class="profile-value" id="profile-repos"></span></p>
-            <div class="bottom-menu">
-                <a href="/" class="menu">Home</a>
-                <p class="menu-divide">|</p>
-                <a href="/logout" class="menu">Logout</a>
-            </div>
+            <p><span class="profile-label">ID: </span><span id="profile-git-id" class="profile-value"></span></p>
+            <p><span class="profile-label">Username: </span><span class="profile-value" id="profile-git-username"></span></p>
+            <p><span class="profile-label">Display Name: </span><span class="profile-value" id="profile-git-display"></span></p>
+            <p><span class="profile-label">Repositories: </span><span class="profile-value" id="profile-git-repos"></span></p>
+        </div>
+        <div id="google-profile" class="profile hide">
+            <img src="/client/img/google_32px.png" alt="google logo"/>
+            <p><span class="profile-label">ID: </span><span id="profile-g-id" class="profile-value"></span></p>
+            <p><span class="profile-label">Email: </span><span class="profile-value" id="profile-g-email"></span></p>
+            <p><span class="profile-label">Display Name: </span><span class="profile-value" id="profile-g-display"></span></p>
+        </div>
+        <div class="bottom-menu">
+            <a href="/" class="menu">Home</a>
+            <p class="menu-divide">|</p>
+            <a href="/logout" class="menu">Logout</a>
         </div>
     </div>
     
