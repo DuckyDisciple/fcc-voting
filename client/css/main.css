@@ -30,6 +30,10 @@ img {
     text-align: center;
 }
 
+a.btn {
+    text-decoration: none;
+}
+
 .btn {
     color: white;
     background-color: #FFA000;
@@ -40,17 +44,20 @@ img {
     width: 100px;
     font-size: 20px;
     padding: 10px 5px;
+    margin: 5px 10px 0px 10px;
 }
 
 .btn:focus {
     outline: 0;
 }
 
-.btn:hover,
+.btn:hover{
+    background-color: #0090FF;
+}
 .adder:hover{
-    transform: scale(0.9,0.9);
-    -webkit-transform: scale(0.9,0.9);
-    -moz-transform: scale(0.9,0.9);
+    transform: scale(1.1,1.1);
+    -webkit-transform: scale(1.1,1.1);
+    -moz-transform: scale(1.1,1.1);
 }
 
 /*-----Login Page-----*/
@@ -65,7 +72,11 @@ img {
     border-radius: 3px;
     width: 300px;
     height: 250px;
-    margin: 86px auto 0px auto;
+    margin: 40px auto 0px auto;
+}
+
+.profile-container {
+    text-align: center;
 }
 
 .profile > img {
@@ -81,7 +92,25 @@ img {
 }
 
 .bottom-menu {
-    padding-top: 15px;
+    background-color: #EEE;
+    width: 300px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 5px auto 0px auto;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.bottom-menu a:link {
+    color: #FFA000;
+}
+
+.bottom-menu a:visited{
+    color: #FFA000;
+}
+
+.bottom-menu a:hover {
+    color: #0090FF;
 }
 
 .menu-divide{
@@ -99,4 +128,16 @@ header a ~ p {
 
 header {
     text-align: right;
+}
+
+header a:link {
+    color: #FFA000;
+}
+
+header a:visited{
+    color: #FFA000;
+}
+
+header a:hover {
+    color: #0090FF;
 }

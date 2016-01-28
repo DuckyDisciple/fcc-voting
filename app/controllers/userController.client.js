@@ -11,7 +11,9 @@
     var profileIdG = document.querySelector("#profile-g-id") || null;
     var emailG = document.querySelector("#profile-g-email") || null;
     var displayNameG = document.querySelector("#profile-g-display") || null;
+    
     var displayName = document.querySelector("#profile-display") || null;
+    
     var apiUrlGit = appUrl + '/api/git/:id';
     var apiUrlG = appUrl + '/api/g/:id';
     
@@ -22,15 +24,15 @@
     ajaxFunctions.ready(ajaxFunctions.ajaxRequest("GET",apiUrlGit,function(data){
         var userObject = JSON.parse(data);
         
-        if(userObject.username!==null){
-            divGit.className = "profile";
+        if(userObject.username!==undefined){
+            if(divGit!==null) divGit.className = "profile";
         }
         
         if(displayName!==null){
-            if(userObject.displayName===null){
-                updateHtmlElement(userObject,displayName,'username');
-            }else{
+            if(userObject.displayName!==undefined){
                 updateHtmlElement(userObject,displayName,'displayName');
+            }else if(userObject.username!==undefined){
+                updateHtmlElement(userObject,displayName,'username');
             }
         }
         
@@ -51,15 +53,15 @@
     ajaxFunctions.ready(ajaxFunctions.ajaxRequest("GET",apiUrlG,function(data){
         var userObject = JSON.parse(data);
         
-        if(userObject.email!==null){
-            divG.className = "profile";
+        if(userObject.email!==undefined){
+            if(divG!==null) divG.className = "profile";
         }
         
         if(displayName!==null){
-            if(userObject.displayName===null){
-                updateHtmlElement(userObject,displayName,'email');
-            }else{
+            if(userObject.displayName!==undefined){
                 updateHtmlElement(userObject,displayName,'displayName');
+            }else if(userObject.email!==undefined){
+                updateHtmlElement(userObject,displayName,'email');
             }
         }
         
