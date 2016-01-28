@@ -65,13 +65,17 @@ module.exports=function(app, passport){
             failureRedirect: '/login'
         }));
     
-    app.route('/api/git/:id/clicks')
+    app.route('/api/:id/clicks')
         .get(isLoggedIn, clickHandler.getClicks)
         .post(isLoggedIn, clickHandler.addClick)
         .delete(isLoggedIn, clickHandler.resetClicks);
     
-    app.route('/api/g/:id/clicks')
-        .get(isLoggedIn, clickHandler.getClicks)
-        .post(isLoggedIn, clickHandler.addClick)
-        .delete(isLoggedIn, clickHandler.resetClicks);
+    // app.route('/api/git/:id/clicks')
+    //     .get(isLoggedIn, clickHandler.getClicks)
+    //     .post(isLoggedIn, clickHandler.addClick)
+    //     .delete(isLoggedIn, clickHandler.resetClicks);
+    // app.route('/api/g/:id/clicks')
+    //     .get(isLoggedIn, clickHandler.getClicks)
+    //     .post(isLoggedIn, clickHandler.addClick)
+    //     .delete(isLoggedIn, clickHandler.resetClicks);
 };
