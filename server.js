@@ -23,6 +23,10 @@ mongoose.connect(mongooseUrl);
 app.use('/client', express.static(process.cwd()+"/client"));  
 app.use('/controllers', express.static(process.cwd()+'/app/controllers'));
 app.use('/common', express.static(process.cwd() + '/app/common'));
+app.use('/views', express.static(process.cwd() + '/app/views'));
+
+app.set('views', process.cwd()+'/app/views');
+app.set('view engine','jade');
 
 app.use(session({
   secret: 'secretGudetama',

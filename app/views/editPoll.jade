@@ -1,0 +1,39 @@
+-var options = pollOptions || ['','']
+-var title = pollTitle || ''
+-var desc = pollDesc || ''
+-var heading = pollTitle || 'New Poll'
+doctype html
+html(lang="en")
+    head
+        title Edit Poll
+        link(rel="stylesheet" href="/client/css/main.css" type="text/css")
+    header
+        div.signed-in.hide
+            p Welcome, #[span#profile-display]!
+            a.menu(href="/edit") New Poll 
+            p |
+            a.menu(href="/polls") My Polls
+            p |
+            a.menu(href="/logout") Logout
+        div.not-signed-in.hide
+            a.login(href="/login") LOGIN
+    body
+        h1.header#poll-title= heading
+        form
+            label(for="title") Title
+            br
+            input(type="text" name="title" value=title)
+            br
+            label(for="desc") Description
+            br
+            input(type="textarea" name="desc" value=desc)
+            br
+            label(for="options") Options
+            br
+            each val,index in options
+                input(type="text" name="opt"+index value=val)
+                br
+            p.add-opt +
+            input(type="submit" value="SAVE")
+        script(type="text/javascript" src="common/ajax-functions.js")
+        //script(type="text/javascript" src="controllers/pollController.js")

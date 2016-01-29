@@ -1,6 +1,7 @@
 "use strict";
 
 var path = process.cwd();
+// var jade = require('jade');
 
 // var ClickHandler = require(process.cwd()+"/app/controllers/clickHandler.server.js");
 
@@ -33,14 +34,16 @@ module.exports=function(app, passport){
         });
     
     app.route('/edit')
-        .get(isLoggedIn, function(req, res) {
-            res.sendFile(path+"/client/editPoll.html");
+        .get(function(req, res) {
+            // res.sendFile(path+"/client/editPoll.html");
+            // res.render('editPoll',{pollTitle: "Test", pollDesc: "This is a test.", pollOptions: ["Red","Blue","Green"]});
+            res.render('editPoll',{});
         });
     
     app.route('/edit/:id')
         .get(isLoggedIn, function(req, res) {
             res.sendFile(path+"/client/editPoll.html");
-        })
+        });
     
     // app.route('/profile')
     //     .get(isLoggedIn, function(req,res){
