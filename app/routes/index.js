@@ -2,7 +2,7 @@
 
 var path = process.cwd();
 
-var ClickHandler = require(process.cwd()+"/app/controllers/clickHandler.server.js");
+// var ClickHandler = require(process.cwd()+"/app/controllers/clickHandler.server.js");
 
 module.exports=function(app, passport){
     
@@ -14,7 +14,7 @@ module.exports=function(app, passport){
         }
     }
     
-    var clickHandler = new ClickHandler();
+    // var clickHandler = new ClickHandler();
     
     app.route('/')
         .get(function(req,res){
@@ -29,13 +29,23 @@ module.exports=function(app, passport){
     app.route('/logout')
         .get(function(req, res) {
             req.logout();
-            res.redirect('/login');
+            res.redirect('/');
         });
     
-    app.route('/profile')
-        .get(isLoggedIn, function(req,res){
-            res.sendFile(path+"/client/profile.html");
+    app.route('/edit')
+        .get(isLoggedIn, function(req, res) {
+            res.sendFile(path+"/client/editPoll.html");
         });
+    
+    app.route('/edit/:id')
+        .get(isLoggedIn, function(req, res) {
+            res.sendFile(path+"/client/editPoll.html");
+        })
+    
+    // app.route('/profile')
+    //     .get(isLoggedIn, function(req,res){
+    //         res.sendFile(path+"/client/profile.html");
+    //     });
     
     app.route('/api/git/:id')
         .get(isLoggedIn,function(req, res) {
@@ -47,14 +57,14 @@ module.exports=function(app, passport){
             res.json(req.user.google);
         });
     
-    app.route('/auth/github')
-        .get(passport.authenticate('github'));
+    // app.route('/auth/github')
+    //     .get(passport.authenticate('github'));
     
-    app.route('/auth/github/callback')
-        .get(passport.authenticate('github',{
-            successRedirect: '/',
-            failureRedirect: '/login'
-        }));
+    // app.route('/auth/github/callback')
+    //     .get(passport.authenticate('github',{
+    //         successRedirect: '/',
+    //         failureRedirect: '/login'
+    //     }));
     
     app.route('/auth/google')
         .get(passport.authenticate('google',{ scope: ['profile','email'] }));
@@ -65,10 +75,10 @@ module.exports=function(app, passport){
             failureRedirect: '/login'
         }));
     
-    app.route('/api/:id/clicks')
-        .get(isLoggedIn, clickHandler.getClicks)
-        .post(isLoggedIn, clickHandler.addClick)
-        .delete(isLoggedIn, clickHandler.resetClicks);
+    // app.route('/api/:id/clicks')
+    //     .get(isLoggedIn, clickHandler.getClicks)
+    //     .post(isLoggedIn, clickHandler.addClick)
+    //     .delete(isLoggedIn, clickHandler.resetClicks);
     
     // app.route('/api/git/:id/clicks')
     //     .get(isLoggedIn, clickHandler.getClicks)
