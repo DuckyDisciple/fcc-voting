@@ -2,32 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Passport Test App</title>
+  <title>Sir Vey</title>
   <link rel="stylesheet" href="/client/css/main.css" type="text/css" />
-  <link href="http://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet" type="text/css">
+  <!--<link href="http://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet" type="text/css">-->
 </head>
 <header>
-  <p>Welcome, <span id="profile-display"></span>!</p>
-  <a href="/profile" class="menu">Profile</a>
-  <p>|</p>
-  <a href="/logout" class="menu">Logout</a>
+  <div class="signed-in">
+    <p>Welcome, <span id="profile-display"></span>!</p>
+    <a href="/edit" class="menu">New Poll</a>
+    <p>|</p>
+    <a href="/polls" class="menu">My Polls</a>
+    <p>|</p>
+    <a href="/logout" class="menu">Logout</a>
+  </div>
+  <div class="not-signed-in hide">
+    <a href="/login" class="login">LOGIN</a>
+  </div>
 </header>
 <body>
   <div class="container">
-    <img src="client/img/gudetama.png" class="adder"/>
-    <br>
-    <p class="gude-text">Gudetama</p>
-  </div>
-  <div class="container">
-    <p>You have clicked Gudetama <span id="click-num"></span> times.</p>
-    <br>
-    <div class="btn-container">
-      <!--<button type="submit" class="btn btn-add">Click Me!</button>-->
-      <button class="btn btn-delete">Reset</button>
-    </div>
+    <h1>Sir Vey</h1>
+    <p>Welcome to Sir Vey. Create polls, share them with friends, see the results.</p>
   </div>
   <script type="text/javascript" src="common/ajax-functions.js"></script>
-  <script type="text/javascript" src="controllers/clickController.client.js"></script>
   <script type="text/javascript" src="controllers/userController.client.js"></script>
 </body>
 </html>
