@@ -36,13 +36,17 @@ module.exports=function(app, passport){
     app.route('/edit')
         .get(function(req, res) {
             // res.sendFile(path+"/client/editPoll.html");
-            // res.render('editPoll',{pollTitle: "Test", pollDesc: "This is a test.", pollOptions: ["Red","Blue","Green"]});
             res.render('editPoll',{});
         });
     
     app.route('/edit/:id')
         .get(isLoggedIn, function(req, res) {
-            res.sendFile(path+"/client/editPoll.html");
+            //use pollHandler to get poll fields
+            var title, desc, options;
+            res.render('editPoll',{pollTitle: title, pollDesc: desc, pollOptions: options});
+            
+            //if pollHandler returns empty object
+            // res.render('editPoll',{});
         });
     
     // app.route('/profile')
