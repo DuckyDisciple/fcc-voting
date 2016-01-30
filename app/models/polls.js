@@ -7,7 +7,8 @@ var Poll = new Schema({
     title: String,
     desc: String,
     options: [{
-        val: String
+        val: String,
+        count: Number
     }]
 });
 
