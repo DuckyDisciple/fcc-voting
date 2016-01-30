@@ -1,7 +1,7 @@
 "use strict";
 
 var path = process.cwd();
-// var jade = require('jade');
+var PollHandler = require(process.cwd()+"/app/controllers/pollHandler.server.js");
 
 // var ClickHandler = require(process.cwd()+"/app/controllers/clickHandler.server.js");
 
@@ -15,6 +15,7 @@ module.exports=function(app, passport){
         }
     }
     
+    var pollHandler = new PollHandler();
     // var clickHandler = new ClickHandler();
     
     app.route('/')
@@ -34,7 +35,7 @@ module.exports=function(app, passport){
         });
     
     app.route('/edit')
-        .get(function(req, res) {
+        .get(isLoggedIn, function(req, res) {
             // res.sendFile(path+"/client/editPoll.html");
             res.render('editPoll',{});
         });
@@ -42,11 +43,22 @@ module.exports=function(app, passport){
     app.route('/edit/:id')
         .get(isLoggedIn, function(req, res) {
             //use pollHandler to get poll fields
-            var title, desc, options;
-            res.render('editPoll',{pollTitle: title, pollDesc: desc, pollOptions: options});
-            
-            //if pollHandler returns empty object
-            // res.render('editPoll',{});
+            var poll = pollHandler.getPoll();
+            if(poll){
+                res.render('editPoll',{pollTitle: poll.title, pollDesc: poll.desc, pollOptions: poll.options});
+            }else{
+               res.render('editPoll',{}); 
+            }
+        });
+    
+    app.route('/save')
+        .post(isLoggedIn, pollHandler.savePoll);
+    app.route('/save/:id')
+        .post(isLoggedIn, pollHandler.savePoll);
+        
+    app.route('/vote/:id')
+        .get(function(req, res){
+            res.redirect('/edit'+req.params.id);
         });
     
     // app.route('/profile')

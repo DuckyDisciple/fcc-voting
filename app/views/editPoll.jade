@@ -2,6 +2,7 @@
 -var title = pollTitle || ''
 -var desc = pollDesc || ''
 -var heading = pollTitle || 'New Poll'
+-var save = '/save' + (pollId===undefined ? '' : '/'+pollId)
 doctype html
 html(lang="en")
     head
@@ -19,7 +20,7 @@ html(lang="en")
             a.login(href="/login") LOGIN
     body
         h1.header#poll-title= heading
-        form
+        form(action=save method="POST")
             label(for="title") Title
             br
             input(type="text" name="title" value=title)
@@ -31,7 +32,7 @@ html(lang="en")
             label(for="options") Options
             br
             each val,index in options
-                input(type="text" name="opt"+index value=val)
+                input.opt(type="text" name="opt"+index value=val)
                 br
             p.add-opt +
             input(type="submit" value="SAVE")
