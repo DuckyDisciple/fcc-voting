@@ -79,7 +79,7 @@ module.exports=function(app, passport){
     app.route('/auth/google/callback')
         .get(passport.authenticate('google',{
             successRedirect: '/',
-            failureRedirect: '/login'
+            failureRedirect: '/'
         }));
     
     // app.route('/api/:id/clicks')
