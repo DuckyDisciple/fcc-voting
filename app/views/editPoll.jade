@@ -32,7 +32,7 @@ html(lang="en")
             label(for="options") Options
             br
             each val,index in options
-                input.opt(type="text" name="opt"+index value=val)
+                input.opt(type="text" name="opt"+index value=val["val"])
                 br
             p.add-opt +
             input(type="submit" value="SAVE")

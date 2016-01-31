@@ -3,13 +3,17 @@
 var Poll = require('../models/polls.js');
 
 function PollHandler(){
-    this.getPoll = function(req, res){
+    this.getPoll = function(req,res){
         Poll
             .findOne({'_id':req.params.id})
-            .exec(function(err, data){
+            .exec(function(err, poll){
                 if(err) throw err;
                 
-                res.json(data);
+                if(poll){
+                res.render('editPoll',{pollTitle: poll.title, pollDesc: poll.desc, pollOptions: poll.options});
+            }else{
+               res.render('editPoll',{}); 
+            }
             });
     };
     
