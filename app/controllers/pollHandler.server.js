@@ -17,13 +17,18 @@ function PollHandler(){
         var tempTitle = req.body.title;
         var tempDesc = req.body.desc;
         var tempOptions = [];
-        var formOptions = req.body.getElementsByClassName("opt");
-        for(var i=0; i<formOptions.length; i++){
-            var newOption = {
-                val: formOptions[i],
-                count: 0
-            };
-            tempOptions.push(newOption);
+        var index=0;
+        while(index>=0){
+            if(req.body.hasOwnProperty("opt"+index)){
+                var newOption = {
+                    val: req.body["opt"+index],
+                    count: 0
+                };
+                tempOptions.push(newOption);
+                index++;
+            }else{
+                index=-1;
+            }
         }
         
         if(req.params.id){

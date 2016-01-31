@@ -13,10 +13,11 @@ var routes = require("./app/routes/index.js");
 var mongoose = require('mongoose');
 var passport = require('passport');
 var session = require('express-session');
+var parser = require('body-parser');
 
 require('./app/config/passport')(passport);
 
-var mongooseUrl = "mongodb://"+process.env.IP+":27017/gudetama";
+var mongooseUrl = "mongodb://"+process.env.IP+":27017/polls";
 // var mongooseUrl = process.env.MONGO_URI;
 mongoose.connect(mongooseUrl);
   
@@ -24,6 +25,9 @@ app.use('/client', express.static(process.cwd()+"/client"));
 app.use('/controllers', express.static(process.cwd()+'/app/controllers'));
 app.use('/common', express.static(process.cwd() + '/app/common'));
 app.use('/views', express.static(process.cwd() + '/app/views'));
+
+app.use(parser.json());
+app.use(parser.urlencoded({extended:true}));
 
 app.set('views', process.cwd()+'/app/views');
 app.set('view engine','jade');
