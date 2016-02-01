@@ -3,7 +3,7 @@
 var Poll = require('../models/polls.js');
 
 function PollHandler(){
-    this.makeEditPage = function(req,res){
+    this.renderEditPage = function(req,res){
         Poll
             .findOne({'_id':req.params.id})
             .exec(function(err, poll){
@@ -14,20 +14,6 @@ function PollHandler(){
             }else{
                res.render('editPoll',{}); 
             }
-            });
-    };
-    
-    this.makeVotePage = function(req,res){
-        Poll
-            .findOne({'_id':req.params.id})
-            .exec(function(err, poll){
-                if(err) throw err;
-                
-                if(poll){
-                    res.render('vote',{title: poll.title, desc: poll.desc, options: poll.options, id: poll._id});
-                }else{
-                    res.redirect('/error');
-                }
             });
     };
     
@@ -72,6 +58,36 @@ function PollHandler(){
             });
         }
     };
+    
+    this.rendrerVotePage = function(req,res){
+        Poll
+            .findOne({'_id':req.params.id})
+            .exec(function(err, poll){
+                if(err) throw err;
+                
+                if(poll){
+                    res.render('vote',{title: poll.title, desc: poll.desc, options: poll.options, id: poll._id});
+                }else{
+                    res.redirect('/error');
+                }
+            });
+    };
+    
+    this.makeVote = function(req,res){
+        var update = {};
+        update["options."+req.params.selected+".count"] = 1;
+        Poll
+            .findOneAndUpdate({'_id':req.params.id},
+            {$inc:update})
+            .exec(function(err,data){
+                if(err) throw err;
+                if(data){
+                    res.redirect('/results/'+req.params.id);
+                }
+            });
+    };
+    
+    
     
     this.deletePoll = function(req,res){
         Poll
