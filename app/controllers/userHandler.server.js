@@ -16,15 +16,20 @@ function UserHandler(){
     
     this.addPoll = function(req, res) {
         Users
-            .findOneAndUpdate({'google.id':req.user.google.id},{$push:{'options':req.params.id}})
+            .findOneAndUpdate({'google.id':req.user.google.id},{$push: {polls: {pollId: req.params.id}}})
             .exec(function(err, data){
                 if(err) throw err;
                 
+                
                 var pollsList = data.polls;
                 var lastIndex = pollsList.length;
-                var lastPoll = pollsList[lastIndex];
+                var lastPoll = pollsList[lastIndex-1];
                 
-                res.redirect('/poll/'+lastPoll);
+                if(lastPoll===undefined){
+                    res.json(data);
+                }else{
+                    res.redirect('/vote/'+lastPoll.pollId);
+                }
             });
     };
     

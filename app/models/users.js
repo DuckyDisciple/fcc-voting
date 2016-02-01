@@ -12,7 +12,7 @@ var User = new Schema({
     },
     polls:[{
         type: Schema.Types.ObjectId,
-        ref: 'Poll'
+        ref: 'pollId'
     }]
 });
 

@@ -1,6 +1,7 @@
 "use strict";
 
 var Poll = require('../models/polls.js');
+var User = require('../models/users.js');
 
 function PollHandler(){
     this.renderEditPage = function(req,res){
@@ -54,12 +55,14 @@ function PollHandler(){
             
             newPoll.save(function(err){
                 if(err) return err;
-                res.redirect('/vote/'+newPoll._id);
+                
+                res.redirect('/addPollToUser/'+newPoll._id);
             });
         }
     };
     
     this.renderVotePage = function(req,res){
+        console.log(req.params.id);
         Poll
             .findOne({'_id':req.params.id})
             .exec(function(err, poll){

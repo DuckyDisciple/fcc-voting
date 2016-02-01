@@ -57,7 +57,7 @@ module.exports=function(app, passport){
         .post(isLoggedIn, pollHandler.savePoll);
     
     app.route('/addPollToUser/:id')
-        .post(isLoggedIn, userHandler.addPoll);
+        .get(isLoggedIn, userHandler.addPoll);
         
     app.route('/vote/:id')
         .get(pollHandler.renderVotePage);
