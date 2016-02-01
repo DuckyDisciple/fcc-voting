@@ -60,19 +60,27 @@ module.exports=function(app, passport){
         .get(pollHandler.renderVotePage);
     
     app.route('/vote/:id/:selected')
-        .post(pollHandler.makeVote);
+        .get(pollHandler.makeVote);
+    
+    app.route('/results/:id')
+        .get(pollHandler.renderResultsPage);
+        
+    app.route('/error/')
+        .get(function(req,res){
+            res.send("Error finding the requested page.");
+        });
     
     // app.route('/profile')
     //     .get(isLoggedIn, function(req,res){
     //         res.sendFile(path+"/client/profile.html");
     //     });
     
-    app.route('/api/git/:id')
-        .get(isLoggedIn,function(req, res) {
-            res.json(req.user.github);
-        });
+    // app.route('/api/git/:id')
+    //     .get(isLoggedIn,function(req, res) {
+    //         res.json(req.user.github);
+    //     });
     
-    app.route('/api/g/:id')
+    app.route('/api/:id')
         .get(isLoggedIn, function(req, res){
             res.json(req.user.google);
         });

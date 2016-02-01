@@ -59,7 +59,7 @@ function PollHandler(){
         }
     };
     
-    this.rendrerVotePage = function(req,res){
+    this.renderVotePage = function(req,res){
         Poll
             .findOne({'_id':req.params.id})
             .exec(function(err, poll){
@@ -87,7 +87,18 @@ function PollHandler(){
             });
     };
     
-    
+    this.renderResultsPage = function(req,res){
+        Poll
+            .findOne({'_id':req.params.id})
+            .exec(function(err,poll){
+                if(err) throw err;
+                if(poll){
+                    res.render('results',{title: poll.title, desc: poll.desc, options: poll.options});
+                }else{
+                    res.redirect('/error');
+                }
+            });
+    };
     
     this.deletePoll = function(req,res){
         Poll
