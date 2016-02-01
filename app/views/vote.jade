@@ -1,0 +1,23 @@
+doctype html
+html
+    head
+        title= title
+        link(rel="stylesheet" href="/client/css/main.css" type="text/css")
+    header
+        div.signed-in.hide
+            p Welcome, #[span#profile-display]!
+            a.menu(href="/edit") New Poll 
+            p |
+            a.menu(href="/polls") My Polls
+            p |
+            a.menu(href="/logout") Logout
+        div.not-signed-in.hide
+            a.login(href="/login") LOGIN
+    body
+        div.container
+            h1.header= title
+            p.description= desc
+            ul.options-list
+                each val,index in options
+                    a.voting-link(href="/vote/"+id+"/"+index)
+                        li.option= val.val

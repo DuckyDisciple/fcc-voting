@@ -3,7 +3,7 @@
 var Poll = require('../models/polls.js');
 
 function PollHandler(){
-    this.getPoll = function(req,res){
+    this.makeEditPage = function(req,res){
         Poll
             .findOne({'_id':req.params.id})
             .exec(function(err, poll){
@@ -14,6 +14,20 @@ function PollHandler(){
             }else{
                res.render('editPoll',{}); 
             }
+            });
+    };
+    
+    this.makeVotePage = function(req,res){
+        Poll
+            .findOne({'_id':req.params.id})
+            .exec(function(err, poll){
+                if(err) throw err;
+                
+                if(poll){
+                    res.render('vote',{title: poll.title, desc: poll.desc, options: poll.options, id: poll._id});
+                }else{
+                    res.redirect('/error');
+                }
             });
     };
     

@@ -41,7 +41,7 @@ module.exports=function(app, passport){
         });
     
     app.route('/edit/:id')
-        .get(isLoggedIn, pollHandler.getPoll );
+        .get(isLoggedIn, pollHandler.makeEditPage );
             //use pollHandler to get poll fields
             // var poll = pollHandler.getPoll(req,res);
             // if(poll){
@@ -57,9 +57,7 @@ module.exports=function(app, passport){
         .post(isLoggedIn, pollHandler.savePoll);
         
     app.route('/vote/:id')
-        .get(function(req, res){
-            res.redirect('/edit/'+req.params.id);
-        });
+        .get(pollHandler.makeVotePage);
     
     // app.route('/profile')
     //     .get(isLoggedIn, function(req,res){
