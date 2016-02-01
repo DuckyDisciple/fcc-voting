@@ -3,7 +3,7 @@
 var path = process.cwd();
 var PollHandler = require(process.cwd()+"/app/controllers/pollHandler.server.js");
 
-// var ClickHandler = require(process.cwd()+"/app/controllers/clickHandler.server.js");
+var UserHandler = require(process.cwd()+"/app/controllers/userHandler.server.js");
 
 module.exports=function(app, passport){
     
@@ -16,7 +16,7 @@ module.exports=function(app, passport){
     }
     
     var pollHandler = new PollHandler();
-    // var clickHandler = new ClickHandler();
+    var userHandler = new UserHandler();
     
     app.route('/')
         .get(function(req,res){
@@ -55,6 +55,9 @@ module.exports=function(app, passport){
         .post(isLoggedIn, pollHandler.savePoll);
     app.route('/save/:id')
         .post(isLoggedIn, pollHandler.savePoll);
+    
+    app.route('/addPollToUser/:id')
+        .post(isLoggedIn, userHandler.addPoll);
         
     app.route('/vote/:id')
         .get(pollHandler.renderVotePage);
