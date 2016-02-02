@@ -10,7 +10,10 @@ var User = new Schema({
         email: String,
         token: String
     },
-    polls:[String]
+    polls:[{
+        id: String,
+        name: String
+    }]
 });
 
 module.exports = mongoose.model('User', User);

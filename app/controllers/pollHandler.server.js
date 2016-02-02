@@ -57,12 +57,13 @@ function PollHandler(){
             newPoll.save(function(err){
                 if(err) return err;
                 
-                res.redirect('/addPollToUser/'+newPoll._id);
+                res.redirect('/addPollToUser/'+newPoll._id+"/"+newPoll.title);
             });
         }
     };
     
     this.renderVotePage = function(req,res){
+        // console.log("renderVotePage: "+req.params.id);
         var id = mongoose.Types.ObjectId(req.params.id);
         Poll
             .findOne({'_id':id})

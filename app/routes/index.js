@@ -56,7 +56,7 @@ module.exports=function(app, passport){
     app.route('/save/:id')
         .post(isLoggedIn, pollHandler.savePoll);
     
-    app.route('/addPollToUser/:id')
+    app.route('/addPollToUser/:id/:name')
         .get(isLoggedIn, userHandler.addPoll);
         
     app.route('/removePollFromUser/:id')

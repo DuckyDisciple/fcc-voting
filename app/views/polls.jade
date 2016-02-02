@@ -22,10 +22,10 @@ html
                 if(polls.length>0)
                     each val in polls
                         div.poll-item
-                            p= val
-                            a.poll-config(href="/edit/"+val) Edit 
+                            p= val.name
+                            a.poll-config(href="/edit/"+val.id) Edit 
                             p.divider |
-                            a.poll-config(href="/delete/"+val) Delete
+                            a.poll-config(href="/delete/"+val.id) Delete
                 else
                     p.no-polls You haven't created any polls yet
         script(type="text/javascript" src="/common/ajax-functions.js")
