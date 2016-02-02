@@ -12,10 +12,15 @@ function PollHandler(){
                 if(err) throw err;
                 
                 if(poll){
-                res.render('editPoll',{pollTitle: poll.title, pollDesc: poll.desc, pollOptions: poll.options});
-            }else{
-               res.render('editPoll',{}); 
-            }
+                    res.render('editPoll',{
+                        pollTitle: poll.title,
+                        pollDesc: poll.desc,
+                        pollOptions: poll.options,
+                        pollId: poll._id
+                    });
+                }else{
+                   res.render('editPoll',{}); 
+                }
             });
     };
     
@@ -45,7 +50,7 @@ function PollHandler(){
                     options:tempOptions
                 }},function(err){
                     if(err) return err;
-                    res.redirect('vote/'+req.params.id);
+                    res.redirect('/vote/'+req.params.id);
                 });
         }else{
             var newPoll = new Poll();
@@ -110,7 +115,7 @@ function PollHandler(){
         Poll
             .remove({'_id':req.params.id},function(err){
                 if(err) return res.json({err:err});
-                console.log("Sending: "+req.params.id);
+                // console.log("Sending: "+req.params.id);
                 res.redirect('/removePollFromUser/'+req.params.id);
             });
     };

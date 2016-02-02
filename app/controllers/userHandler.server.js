@@ -41,9 +41,9 @@ function UserHandler(){
     };
     
     this.deletePoll = function(req, res){
-        console.log("Receiving: "+req.params.id);
+        // console.log("Receiving: "+req.params.id);
         Users
-            .findOneAndUpdate({'google.id':req.user.google.id},{$pull: {polls: req.params.id}})
+            .findOneAndUpdate({'google.id':req.user.google.id},{$pull: {polls: {id: req.params.id}}})
             .exec(function(err, data) {
                 if(err) throw err;
                 
