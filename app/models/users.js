@@ -10,10 +10,7 @@ var User = new Schema({
         email: String,
         token: String
     },
-    polls:[{
-        type: Schema.Types.ObjectId,
-        ref: 'pollId'
-    }]
+    polls:[String]
 });
 
 module.exports = mongoose.model('User', User);

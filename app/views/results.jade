@@ -20,4 +20,5 @@ html
             ul.options-list
                 each val,index in options
                     li.option #[span.option-value= val.val]: #[span.option-count= val.count]
-        script(type="text/javascript" src="controllers/userController.client.js")
+        script(type="text/javascript" src="/common/ajax-functions.js")
+        script(type="text/javascript" src="/controllers/userController.client.js")

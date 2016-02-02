@@ -15,8 +15,9 @@ function UserHandler(){
     };
     
     this.addPoll = function(req, res) {
+        // console.log(typeof req.params.id);
         Users
-            .findOneAndUpdate({'google.id':req.user.google.id},{$push: {polls: {pollId: req.params.id}}})
+            .findOneAndUpdate({'google.id':req.user.google.id},{$push: {polls: req.params.id}}, {new:true})
             .exec(function(err, data){
                 if(err) throw err;
                 
@@ -25,10 +26,13 @@ function UserHandler(){
                 var lastIndex = pollsList.length;
                 var lastPoll = pollsList[lastIndex-1];
                 
+                console.log("List: "+pollsList);
+                console.log("Last Poll: "+lastPoll);
+                
                 if(lastPoll===undefined){
                     res.json(data);
                 }else{
-                    res.redirect('/vote/'+lastPoll.pollId);
+                    res.redirect('/vote/'+lastPoll);
                 }
             });
     };

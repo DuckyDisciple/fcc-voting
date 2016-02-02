@@ -2,6 +2,7 @@
 
 var Poll = require('../models/polls.js');
 var User = require('../models/users.js');
+var mongoose = require('mongoose');
 
 function PollHandler(){
     this.renderEditPage = function(req,res){
@@ -62,9 +63,9 @@ function PollHandler(){
     };
     
     this.renderVotePage = function(req,res){
-        console.log(req.params.id);
+        var id = mongoose.Types.ObjectId(req.params.id);
         Poll
-            .findOne({'_id':req.params.id})
+            .findOne({'_id':id})
             .exec(function(err, poll){
                 if(err) throw err;
                 
@@ -77,10 +78,11 @@ function PollHandler(){
     };
     
     this.makeVote = function(req,res){
+        var id = mongoose.Types.ObjectId(req.params.id);
         var update = {};
         update["options."+req.params.selected+".count"] = 1;
         Poll
-            .findOneAndUpdate({'_id':req.params.id},
+            .findByIdAndUpdate(id,
             {$inc:update})
             .exec(function(err,data){
                 if(err) throw err;
