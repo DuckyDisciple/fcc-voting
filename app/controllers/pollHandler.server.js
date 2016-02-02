@@ -109,7 +109,8 @@ function PollHandler(){
         Poll
             .remove({'_id':req.params.id},function(err){
                 if(err) return res.json({err:err});
-                res.redirect('/polls');
+                console.log("Sending: "+req.params.id);
+                res.redirect('/removePollFromUser/'+req.params.id);
             });
     };
 }

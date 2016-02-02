@@ -10,7 +10,7 @@ function UserHandler(){
             .exec(function(err, data){
               if(err) throw err;
                
-              res.json(data.polls);
+              res.render('polls',{displayName: req.user.google.displayName, polls: data.polls});
             });
     };
     
@@ -26,8 +26,8 @@ function UserHandler(){
                 var lastIndex = pollsList.length;
                 var lastPoll = pollsList[lastIndex-1];
                 
-                console.log("List: "+pollsList);
-                console.log("Last Poll: "+lastPoll);
+                // console.log("List: "+pollsList);
+                // console.log("Last Poll: "+lastPoll);
                 
                 if(lastPoll===undefined){
                     res.json(data);
@@ -38,12 +38,13 @@ function UserHandler(){
     };
     
     this.deletePoll = function(req, res){
+        console.log("Receiving: "+req.params.id);
         Users
-            .findOneAndUpdate({'github.id':req.user.github.id},{$set:{'numClicks.clicks':0}})
+            .findOneAndUpdate({'google.id':req.user.google.id},{$pull: {polls: req.params.id}})
             .exec(function(err, data) {
                 if(err) throw err;
                 
-                res.json(data.numClicks);
+                res.redirect("/polls");
             });
     };
 }

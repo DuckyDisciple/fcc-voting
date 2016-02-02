@@ -59,6 +59,9 @@ module.exports=function(app, passport){
     app.route('/addPollToUser/:id')
         .get(isLoggedIn, userHandler.addPoll);
         
+    app.route('/removePollFromUser/:id')
+        .get(isLoggedIn, userHandler.deletePoll);
+        
     app.route('/vote/:id')
         .get(pollHandler.renderVotePage);
     
@@ -67,6 +70,12 @@ module.exports=function(app, passport){
     
     app.route('/results/:id')
         .get(pollHandler.renderResultsPage);
+        
+    app.route('/polls')
+        .get(isLoggedIn, userHandler.getPolls);
+        
+    app.route('/delete/:id')
+        .get(isLoggedIn, pollHandler.deletePoll);
         
     app.route('/error/')
         .get(function(req,res){
