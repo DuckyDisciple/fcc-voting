@@ -1,0 +1,32 @@
+-var name = displayName ? displayName + "'s" : "Your"
+-var heading = name + " Polls"
+doctype html
+html
+    head
+        title My Polls
+        link(rel="stylesheet" href="/client/css/main.css" type="text/css")
+    header
+        div.signed-in.hide
+            p Welcome, #[span#profile-display]!
+            a.menu(href="/edit") New Poll 
+            p |
+            a.menu(href="/polls") My Polls
+            p |
+            a.menu(href="/logout") Logout
+        div.not-signed-in
+            a.login(href="/login") LOGIN
+    body
+        div.container
+            h1.heading= heading
+            div.poll-list
+                if(polls.length>0)
+                    each val in polls
+                        div.poll-item
+                            p val
+                            a.poll-config(href="/edit/"+val) Edit 
+                            p.divider |
+                            a.poll-config(href="/delete/"+val) Delete
+                else
+                    p.no-polls You haven't created any polls yet
+        script(type="text/javascript" src="/common/ajax-functions.js")
+        script(type="text/javascript" src="/controllers/userController.client.js")

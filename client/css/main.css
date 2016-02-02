@@ -141,3 +141,8 @@ header a:visited{
 header a:hover {
     color: #0090FF;
 }
+
+/*-----My Polls-----*/
+.divider {
+    display: inline;
+}
