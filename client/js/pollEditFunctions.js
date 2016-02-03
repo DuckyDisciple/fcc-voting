@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $(".locked").prop("readOnly",true);
+    $(".locked").prop("disabled",true);
     $(".submit").prop("disabled",true);
 });
 

@@ -29,25 +29,20 @@ function PollHandler(){
         var tempDesc = req.body.desc;
         var tempOptions = [];
         var index=0;
-        while(index>=0){
-            if(req.body.hasOwnProperty("opt"+index)){
+        for(var key in req.body){
+            if(key.substr(0,3)==="opt"){
                 var newOption = {
-                    val: req.body["opt"+index],
+                    val: req.body[key],
                     count: 0
                 };
                 tempOptions.push(newOption);
-                index++;
-            }else{
-                index=-1;
             }
         }
         
         if(req.params.id){
             Poll
-                .findOneAndUpdate({'_id':req.params.id},{$set:{
-                    title:tempTitle,
-                    desc:tempDesc,
-                    options:tempOptions
+                .findOneAndUpdate({'_id':req.params.id},{$push:{
+                    options: { $each: tempOptions }
                 }},function(err){
                     if(err) return err;
                     res.redirect('/vote/'+req.params.id);
