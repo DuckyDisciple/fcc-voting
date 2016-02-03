@@ -1,3 +1,4 @@
+-var lockStatus = pollId ? "locked" : ""
 -var options = pollOptions || ['','']
 -var title = pollTitle || ''
 -var desc = pollDesc || ''
@@ -23,20 +24,23 @@ html(lang="en")
         form(action=save method="POST")
             label(for="title") Title
             br
-            input(type="text" name="title" value=title)
+            input(type="text" class=lockStatus name="title" value=title)
             br
             label(for="desc") Description
             br
-            input(type="textarea" name="desc" value=desc)
+            input(type="textarea" class=lockStatus name="desc" value=desc)
             br
             label(for="options") Options
             br
-            each val,index in options
-                input.opt(type="text" name="opt"+index value=val["val"])
-                br
+            div#opts
+                each val,index in options
+                    input(type="text" class="opt "+lockStatus name="opt"+index value=val["val"])
+                    br
             p.add-opt +
             input(type="submit" value="SAVE")
         script(type="text/javascript" src="/common/ajax-functions.js")
         script(type="text/javascript" src="/controllers/userController.client.js")
+        script(type="text/javascript" src="/client/js/jquery.min.js")
+        script(type="text/javascript" src="/client/js/pollEditFunctions.js")
 
         //script(type="text/javascript" src="controllers/pollController.js")
