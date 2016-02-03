@@ -22,7 +22,10 @@ html
                 if(polls.length>0)
                     each val in polls
                         div.poll-item
-                            p= val.name
+                            a.poll-link(href="/vote/"+val.id)
+                                p= val.name
+                            a.poll-config(href="/results/"+val.id) Results
+                            p.divider |
                             a.poll-config(href="/edit/"+val.id) Edit 
                             p.divider |
                             a.poll-config(href="/delete/"+val.id) Delete
