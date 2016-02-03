@@ -36,8 +36,8 @@ html(lang="en")
                 each val,index in options
                     input(type="text" class="opt "+lockStatus name="opt"+index value=val["val"])
                     br
-            p.add-opt +
-            input(type="submit" value="SAVE")
+            p.add-opt(tabindex=0) +
+            input.submit(type="submit" value="SAVE")
         script(type="text/javascript" src="/common/ajax-functions.js")
         script(type="text/javascript" src="/controllers/userController.client.js")
         script(type="text/javascript" src="/client/js/jquery.min.js")
