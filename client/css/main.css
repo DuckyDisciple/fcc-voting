@@ -82,6 +82,8 @@ header {
     color: #fff;
     border: none;
     border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 .login-button:hover {
@@ -111,7 +113,7 @@ header a:hover {
     width: 100%;
     top: 40px;
     position: absolute;
-    height: 300px;
+    height: 325px;
     background: #80CBC4;
     z-index: -1;
     padding-top: 50px;
@@ -299,4 +301,22 @@ div:focus {
     background: #4DB6AC;
     color: white;
     border: none;
+}
+
+/*-----Error Page-----*/
+button.home {
+    height: 40px;
+    width: 75px;
+    background: #ffa000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin: 20px auto 10px auto;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+button.home:hover {
+    background: #FFD54F;
+    cursor: pointer;
 }

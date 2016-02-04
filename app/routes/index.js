@@ -79,7 +79,7 @@ module.exports=function(app, passport){
         
     app.route('/error/')
         .get(function(req,res){
-            res.send("Error finding the requested page.");
+            res.render('error',{});
         });
     
     // app.route('/profile')
