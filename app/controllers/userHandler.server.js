@@ -9,8 +9,11 @@ function UserHandler(){
             .findOne({'google.id':req.user.google.id}, {_id:0})
             .exec(function(err, data){
               if(err) throw err;
+              
+              var fullName = req.user.google.displayName;
+              var firstName = fullName.substring(0,fullName.lastIndexOf(' '));
                
-              res.render('polls',{displayName: req.user.google.displayName, polls: data.polls});
+              res.render('polls',{displayName: firstName, polls: data.polls});
             });
     };
     

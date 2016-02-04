@@ -20,7 +20,11 @@
     var apiUrl = appUrl + '/api/:id';
     
     function updateHtmlElement(data, element, userProperty){
-        element.innerHTML = data[userProperty];
+        if(userProperty==="displayName"){
+            var fullName = data[userProperty];
+            var firstName = fullName.substring(0,fullName.lastIndexOf(' '));
+        }
+        element.innerHTML = firstName;
     }
     
     // ajaxFunctions.ready(ajaxFunctions.ajaxRequest("GET",apiUrlGit,function(data){
