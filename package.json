@@ -1,9 +1,11 @@
 {
-  "name": "passport-turorial",
+  "name": "Sir-Vey",
   "version": "1.0.0",
-  "description": "Learning about passport",
+  "description": "Voting app with user authentication",
   "main": "server.js",
-  "start": "node server.js",
+  "scripts":{
+    "start": "node server.js",
+  },
   "repository": "",
   "author": "Drew Sartorius",
   "dependencies": {
