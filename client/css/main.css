@@ -4,6 +4,8 @@ body {
     font-size: 16px;
     text-align: center;
     background: #f5f5f5;
+    padding: 100px 0 0 0;
+    margin: 0;
 }
 
 p {
@@ -13,17 +15,17 @@ p {
 .container {
     background: #009688;
     color: #FFF;
-    border-radius: 5px;
+    border-radius: 10px;
     box-shadow: 5px 5px 25px 0px rgba(0,0,0,0.75);
     width: 400px;
     margin: 15px auto;
     padding: 15px;
 }
 
-.container p {
-    text-align: center;
-    padding: 0;
-}
+/*.container p {*/
+/*    text-align: center;*/
+/*    padding: 0;*/
+/*}*/
 
 h1 {
     padding: 10px;
@@ -41,27 +43,59 @@ header a ~ p {
     padding: 5px;
 }
 
+.logo {
+    vertical-align: middle;
+    float: left;
+    font-size: 36px;
+    margin-top: 5px;
+}
+
 header {
+    position: fixed;
+    width: 100%;
     text-align: right;
     background-color: #009688;
     color: #FFF;
-    padding: 10px;
-    padding-bottom: 20px;
-    margin: -10px -10px 50px -10px;
+    height: 40px;
+    top: 0;
+    padding: 0 10px 15px 10px;
     font-weight: 300;
     box-shadow: 0 0 25px 0 rgba(0,0,0,0.75);
 }
 
+.signed-in {
+    padding-right: 20px;
+    vertical-align: middle;
+}
+.not-signed-in {
+    height: 50px;
+    padding-right: 20px;
+    vertical-align: middle;
+    float: right;
+    margin-top: 5px;
+}
+
+.login-button {
+    height: 40px;
+    width: 75px;
+    background: #ffa000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+.login-button:hover {
+    cursor: pointer;
+    background: #FFD54F;
+}
+
 header a {
     font-weight: bold;
+    text-decoration: none;
 }
 
-header a:link {
-    color: #FFA000;
-}
-
-header a:visited{
-    color: #FFA000;
+header a {
+    color: #ffa000;
 }
 
 header a:hover {
@@ -72,40 +106,52 @@ header a:hover {
     display: none;
 }
 
-/*-----Image Style-----*/
-img {
-    margin: 20px auto 0 auto;
-    display: block;
-}
-.gude-text {
-    padding: 0;
-    margin: -25px 0 0 0;
-    font-weight: 500;
-    font-size: 60px;
-    color: #FFA000;
-}
-
-/*-----Button Style-----*/
-.btn-container {
-    margin: -10px auto 0 auto;
+/*-----Home Page-----*/
+.home-container {
+    width: 100%;
+    top: 40px;
+    position: absolute;
+    height: 300px;
+    background: #80CBC4;
+    z-index: -1;
+    padding-top: 50px;
     text-align: center;
 }
 
+.home-container div {
+    display: block;
+}
+
+/*-----Image Style-----*/
+.logo-pic {
+    width: 150px;
+    height: 150px;
+    margin: 15px auto;
+    display: block;
+}
+
+.logo-icon {
+    width: 40px;
+    height: 40px;
+}
+
+/*-----Login Page-----*/
 a.btn {
     text-decoration: none;
 }
 
 .btn {
-    color: white;
-    background-color: #FFA000;
+    color: #009688;
+    background: none;
     display: inline-block;
     border: 0;
-    border-radius: 3px;
     font-weight: 500;
-    width: 100px;
-    font-size: 20px;
-    padding: 10px 5px;
+    font-size: 40px;
     margin: 5px 10px 0px 10px;
+}
+
+.title-text {
+    font-size: 75px;
 }
 
 .btn:focus {
@@ -113,31 +159,59 @@ a.btn {
 }
 
 .btn:hover{
-    background-color: #0090FF;
-}
-.adder:hover{
-    transform: scale(1.1,1.1);
-    -webkit-transform: scale(1.1,1.1);
-    -moz-transform: scale(1.1,1.1);
-}
-
-/*-----Login Page-----*/
-.login {
-    text-align: center;
+    color: #F00;
 }
 
 /*-----My Polls-----*/
 .divider {
     display: inline;
+    padding: 6px;
+    color: #ddd;
+}
+
+.poll-item {
+    margin: 10px -15px;
+    height: 60px;
+    padding: 5px;
+}
+
+.poll-link {
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.poll-configs {
+    display: none;
+}
+
+.poll-item:hover {
+    background: #00796B;
+}
+
+.poll-item:hover .poll-configs {
+    display: block;
+}
+
+.poll-config {
+    text-decoration: none;
+    color: #ffa000;
+    font-weight: bold;
+}
+
+.poll-config:hover {
+    color: #FFD54F;
 }
 
 /*-----Vote Page-----*/
 .option {
     color: #fff;
-    margin: 10px auto;
-    background: #80CBC4;
-    border-radius: 3px;
-    padding: 5px;
+    font-weight: bold;
+    margin: 10px 25px;
+    background: #00796B;
+    border-radius: 5px;
+    padding: 10px;
 }
 
 .option:hover {
