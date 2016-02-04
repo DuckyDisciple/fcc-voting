@@ -17,8 +17,8 @@ var parser = require('body-parser');
 
 require('./app/config/passport')(passport);
 
-var mongooseUrl = "mongodb://"+process.env.IP+":27017/polls";
-// var mongooseUrl = process.env.MONGO_URI;
+// var mongooseUrl = "mongodb://"+process.env.IP+":27017/polls";
+var mongooseUrl = process.env.MONGO_URI;
 mongoose.connect(mongooseUrl);
   
 app.use('/client', express.static(process.cwd()+"/client"));  

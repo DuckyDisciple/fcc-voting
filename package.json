@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Learning about passport",
   "main": "server.js",
+  "start": "node server.js",
   "repository": "",
   "author": "Drew Sartorius",
   "dependencies": {
