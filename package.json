@@ -6,6 +6,9 @@
   "scripts":{
     "start": "node server.js"
   },
+  "engines":{
+    "node": "4.1.1"
+  },
   "repository": "",
   "author": "Drew Sartorius",
   "dependencies": {
@@ -17,7 +20,6 @@
     "express-session": "^1.13.0",
     "jade": "^1.11.0",
     "mongoose": "^4.3.7",
-    "node": "^4.1.1",
     "passport": "^0.3.2",
     "passport-github": "^1.0.0",
     "passport-google-oauth": "^0.2.0",
