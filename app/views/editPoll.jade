@@ -20,24 +20,25 @@ html(lang="en")
         div.not-signed-in
             a.login(href="/login") LOGIN
     body
-        h1.header#poll-title= heading
-        form(action=save method="POST")
-            label(for="title") Title
-            br
-            input(type="text" class=lockStatus name="title" value=title)
-            br
-            label(for="desc") Description
-            br
-            input(type="textarea" class=lockStatus name="desc" value=desc)
-            br
-            label(for="options") Options
-            br
-            div#opts
-                each val,index in options
-                    input(type="text" class="opt "+lockStatus name="opt"+index value=val["val"])
-                    br
-            p.add-opt(tabindex=0) +
-            input.submit(type="submit" value="SAVE")
+        .container
+            h1.header#poll-title= heading
+            form(action=save method="POST")
+                label(for="title") Title
+                br
+                input(type="text" class=lockStatus name="title" autocomplete="off" value=title)
+                br
+                label(for="desc") Description
+                br
+                input(type="textarea" class=lockStatus name="desc" autocomplete="off" value=desc)
+                br
+                label(for="options") Options
+                br
+                div#opts
+                    each val,index in options
+                        input(type="text" class="opt "+lockStatus name="opt"+index autocomplete="off" value=val["val"])
+                        br
+                .add-opt(tabindex=0) +
+                input.submit(type="submit" value="SAVE")
         script(type="text/javascript" src="/common/ajax-functions.js")
         script(type="text/javascript" src="/controllers/userController.client.js")
         script(type="text/javascript" src="/client/js/jquery.min.js")

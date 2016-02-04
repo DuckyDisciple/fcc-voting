@@ -2,13 +2,74 @@
 body {
     font-family: "Roboto", sans-serif;
     font-size: 16px;
+    text-align: center;
+    background: #f5f5f5;
 }
+
 p {
     margin: 8px 0 0 0;
 }
+
+.container {
+    background: #009688;
+    color: #FFF;
+    border-radius: 5px;
+    box-shadow: 5px 5px 25px 0px rgba(0,0,0,0.75);
+    width: 400px;
+    margin: 15px auto;
+    padding: 15px;
+}
+
 .container p {
     text-align: center;
     padding: 0;
+}
+
+h1 {
+    padding: 10px;
+    margin: 10px auto 10px auto;
+}
+
+ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+/*-----Header-----*/
+header a ~ p {
+    display: inline;
+    padding: 5px;
+}
+
+header {
+    text-align: right;
+    background-color: #009688;
+    color: #FFF;
+    padding: 10px;
+    padding-bottom: 20px;
+    margin: -10px -10px 50px -10px;
+    font-weight: 300;
+    box-shadow: 0 0 25px 0 rgba(0,0,0,0.75);
+}
+
+header a {
+    font-weight: bold;
+}
+
+header a:link {
+    color: #FFA000;
+}
+
+header a:visited{
+    color: #FFA000;
+}
+
+header a:hover {
+    color: #FFD54F;
+}
+
+.hide {
+    display: none;
 }
 
 /*-----Image Style-----*/
@@ -65,90 +126,103 @@ a.btn {
     text-align: center;
 }
 
-/*-----Profile Page-----*/
-.profile {
-    text-align: center;
-    background-color: #EEE;
-    border-radius: 3px;
-    width: 300px;
-    height: 250px;
-    margin: 40px auto 0px auto;
-}
-
-.profile-container {
-    text-align: center;
-}
-
-.profile > img {
-    padding-top: 20px;
-}
-
-.profile-label {
-    font-weight: bold;
-}
-
-.profile-value {
-    font-weight: 400;
-}
-
-.bottom-menu {
-    background-color: #EEE;
-    width: 300px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin: 5px auto 0px auto;
-    border-radius: 3px;
-    text-align: center;
-}
-
-.bottom-menu a:link {
-    color: #FFA000;
-}
-
-.bottom-menu a:visited{
-    color: #FFA000;
-}
-
-.bottom-menu a:hover {
-    color: #0090FF;
-}
-
-.menu-divide{
-    display: inline;
-}
-
-.hide {
-    display: none;
-}
-
-/*-----Header-----*/
-header a ~ p {
-    display: inline;
-}
-
-header {
-    text-align: right;
-}
-
-header a:link {
-    color: #FFA000;
-}
-
-header a:visited{
-    color: #FFA000;
-}
-
-header a:hover {
-    color: #0090FF;
-}
-
 /*-----My Polls-----*/
 .divider {
     display: inline;
 }
 
+/*-----Vote Page-----*/
+.option {
+    color: #fff;
+    margin: 10px auto;
+    background: #80CBC4;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.option:hover {
+    background: #4DB6AC;
+}
+
+.voting-link {
+    text-decoration: none;
+}
+
+/*-----Results Page-----*/
+.result {
+    color: #fff;
+    margin: 10px auto;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 3px;
+    padding: 5px;
+    text-align: left;
+    /*background: -moz-linear-gradient(left, #ffa000 0%, #ffa000 50%, #009688 50%, #009688 100%);*/
+    /*background: -webkit-linear-gradient(left, #ffa000 0%, #ffa000 50%, #009688 50%, #009688 100%);*/
+    /*background: -o-linear-gradient(left, #ffa000 0%, #ffa000 50%, #009688 50%, #009688 100%);*/
+    /*background: -ms-linear-gradient(left, #ffa000 0%, #ffa000 50%, #009688 50%, #009688 100%);*/
+    /*background: linear-gradient(to right, #ffa000 0%, #ffa000 50%, #009688 50%, #009688 100%);*/
+}
+
 /*-----Poll Edit-----*/
+label {
+    font-weight: bold;
+}
+
+input {
+    border: none;
+    border-radius: 3px;
+    margin: 5px 0 20px 0;
+    padding: 5px;
+}
+
+.opt {
+    margin-bottom: 10px;
+}
+
+.add-opt {
+    color: #ffa000;
+    font-weight: bold;
+    font-size: 36px;
+    margin: 0px auto 20px auto;
+    width: 30px;
+}
+
+div:focus {
+    outline: none !important;
+}
+
+.add-opt:hover{
+    cursor: pointer;
+}
+
+.submit {
+    background: #00695C;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.submit:hover {
+    background: #004D40;
+    cursor: pointer;
+}
+
+.submit:focus {
+    outline: none;
+}
+
+.submit:disabled {
+    background: #4DB6AC;
+    color: #ddd;
+    cursor: default;
+}
+
 .locked {
-    /*Make it look disabled*/
+    background: #4DB6AC;
+    color: white;
     border: none;
 }
