@@ -1,0 +1,35 @@
+-var title = groupTitle || ''
+-var desc = groupDesc || ''
+-var dates = groupDates || ''
+-var time = groupTime || ''
+-var leaders = groupLeaders || [currentUser]
+-var members = groupMembers || 'No current members'
+-var heading = 'Edit ' + groupTitle || 'New Poll'
+-var save = '/save' + (groupId===undefined ? '' : '/'+groupId)
+doctype html
+html(lang="en")
+    head
+        title= heading
+        link(rel="stylesheet" href="/client/css/main.css" type="text/css")
+    include ./includes/header.jade
+    body
+        .container
+            h1.header#poll-title= heading
+            form(action=save method="POST")
+                label(for="title") Title
+                input(type="text" class=lockStatus name="title" autocomplete="off" value=title)
+                label(for="desc") Description
+                input(type="textarea" class=lockStatus name="desc" autocomplete="off" value=desc)
+                div#ldrs
+                    label(for="leaders") Leaders
+                    ul.leaders
+                        each val,index in leaders
+                            li.leader= val["displayName"]
+                div#mbrs
+                    label(for="members") Members
+                    ul.members
+                        each val,index in members
+                            li.member= val.["name"]
+                input.submit(type="submit" value="SAVE")
+        
+        script(type="text/javascript" src="/client/js/groupEditFunctions.js")

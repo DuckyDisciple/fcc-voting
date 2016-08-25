@@ -7,14 +7,12 @@
     ---------------------------------- `-' ------------------------------- `--' ---------------
 
 
-Here is a voting app for Free Code Camp. It includes the following functionality:
+Here is the framework for gamifying a group
 
 -Authentication
--Create and save polls
--Share polls with friends
--See aggregated results of polls
--Delete polls
--Add any number of option to a polls
--Vote on other polls
--See charts of poll results
--Add more options to a previously created poll
+-Upgrade accounts to leaders
+-Leaders create groups
+-Users can join a group
+-Leaders give points to users
+-Users can view their points awarded and total points
+-Users can see what place they are in

@@ -1,0 +1,19 @@
+header
+    .header-left
+        a.home(href="/")
+            img.logo-header(src="/client/img/Logo.png")
+    .header-right
+        .logged-in.hide
+            p Welcome, #[span#profile-display]!
+            nav
+                div.requests
+                a.menu(href="/groups") GROUPS
+                p.divider |
+                a.menu(href="/profile") PROFILE
+                p.divider |
+                a.menu(href="/logout") LOGOUT
+        .not-logged-in.hide
+            a.login(href="/login")
+                button.login-button LOGIN
+    script(type="text/javascript" src="/client/js/jquery.min.js")
+    script(type="text/javascript" src="/client/js/header.js")
