@@ -1,0 +1,32 @@
+doctype html
+html
+    head
+        title Profile
+        link(rel="stylesheet" href="/client/css/main.css" type="text/css")
+    include ./includes/header.jade
+    body
+        div.container
+            h1.heading Profile
+            div.profile-info
+                h2 Name
+                p= displayName
+                h2 Email
+                p= email
+                h2 Groups
+                ul.my-groups
+                    each val in groups
+                        li.group(id=val["id"])= val["groupName"]
+            div.point-total
+                p.total-points= totalPoints
+            div.point-list
+                if(points.length>0)
+                    each val in points
+                        div.point-item
+                            p.point-group= val.group
+                            p.point-amount= val.amount
+                            p.point-type= val.type
+                            p.point-desc= val.desc
+                            p.point-date= val.date
+                else
+                    p.no-points You haven't don't have any points yet
+        // script(type="text/javascript" src="/controllers/userController.client.js")

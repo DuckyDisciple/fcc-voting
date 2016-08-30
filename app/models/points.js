@@ -5,6 +5,7 @@ var Schema = mongoose.Schema;
 
 var Point = new Schema({
     desc: String,
+    type: Number,
     givenBy: {
         type: Schema.Types.ObjectId,
         ref: 'User'

@@ -1,8 +1,8 @@
 "use strict";
 
 var path = process.cwd();
-var PollHandler = require(process.cwd()+"/app/controllers/pollHandler.server.js");
-
+var PointHandler = require(process.cwd()+"/app/controllers/pointHandler.server.js");
+var GroupHandler = require(process.cwd()+"/app/controllers/groupHandler.server.js");
 var UserHandler = require(process.cwd()+"/app/controllers/userHandler.server.js");
 
 module.exports=function(app, passport){
@@ -15,7 +15,8 @@ module.exports=function(app, passport){
         }
     }
     
-    var pollHandler = new PollHandler();
+    var pointHandler = new PointHandler();
+    var groupHandler = new GroupHandler();
     var userHandler = new UserHandler();
     
     app.route('/')
@@ -34,14 +35,14 @@ module.exports=function(app, passport){
             res.redirect('/');
         });
     
-    app.route('/edit')
+    app.route('/new')
         .get(isLoggedIn, function(req, res) {
             // res.sendFile(path+"/client/editPoll.html");
-            res.render('editPoll',{});
+            res.render('editGroup',{});
         });
     
     app.route('/edit/:id')
-        .get(isLoggedIn, pollHandler.renderEditPage );
+        .get(isLoggedIn, groupHandler.renderEditPage );
             //use pollHandler to get poll fields
             // var poll = pollHandler.getPoll(req,res);
             // if(poll){
@@ -52,30 +53,21 @@ module.exports=function(app, passport){
         // );
     
     app.route('/save')
-        .post(isLoggedIn, pollHandler.savePoll);
+        .post(isLoggedIn, groupHandler.saveGroup);
     app.route('/save/:id')
-        .post(isLoggedIn, pollHandler.savePoll);
+        .post(isLoggedIn, groupHandler.saveGroup);
+        
+    app.route('/assign/:group/:user')
+        .post(isLoggedIn, pointHandler.assignPoints);
     
-    app.route('/addPollToUser/:id/:name')
-        .get(isLoggedIn, userHandler.addPoll);
-        
-    app.route('/removePollFromUser/:id')
-        .get(isLoggedIn, userHandler.deletePoll);
-        
-    app.route('/vote/:id')
-        .get(pollHandler.renderVotePage);
+    app.route('/api/points/:user')
+        .get(pointHandler.getPoints);
     
-    app.route('/vote/:id/:selected')
-        .get(pollHandler.makeVote);
-    
-    app.route('/results/:id')
-        .get(pollHandler.renderResultsPage);
+    app.route('/api/groups')
+        .get(isLoggedIn, pointHandler.getMyGroups);
         
-    app.route('/polls')
-        .get(isLoggedIn, userHandler.getPolls);
-        
-    app.route('/delete/:id')
-        .get(isLoggedIn, pollHandler.deletePoll);
+    app.route('/groups')
+        .get(isLoggedIn, groupHandler.getAllGroups);
         
     app.route('/error/')
         .get(function(req,res){
